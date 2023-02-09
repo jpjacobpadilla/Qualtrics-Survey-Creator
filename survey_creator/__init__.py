@@ -8,12 +8,15 @@ from .mixins.create_block import CreateBlockMixin
 from .mixins.text_question import TextQuestionMixin
 from .mixins.ec_article_question import ECArticleQuestionMixin
 from .mixins.ec_turn_lvl_convo_text_question import ECTurnLVLConvoQuestionMixin
+from .mixins.matrix_question import MatrixQuestionMixin
+
 
 class Creator(
     CreateBlockMixin,
     TextQuestionMixin,
     ECArticleQuestionMixin,
     ECTurnLVLConvoQuestionMixin,
+    MatrixQuestionMixin,
     threading.Thread
     ):
     """
