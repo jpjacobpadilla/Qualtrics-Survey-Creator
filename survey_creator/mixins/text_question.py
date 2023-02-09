@@ -1,2 +1,3 @@
 class TextQuestionMixin:
-    pass
+    def add_text_question():
+        pass

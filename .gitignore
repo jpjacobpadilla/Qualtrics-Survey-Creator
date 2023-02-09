@@ -28,3 +28,6 @@ venv/
 
 # Secrets
 secret.py
+
+# Likability survey stuff
+likability_survey/
