@@ -7,13 +7,13 @@ class TextQuestionMixin:
                         qtext=question_text,
                         data_export_tag=desc, 
                         question_desc=desc, 
-                        querystring={'blockId': self.last_created_block.block_id}
                     )
         
         resp = self._make_qualtrics_request(
                     method='post', 
                     endpoint=self.question_url, 
-                    json_dump=body
+                    json_dump=body,
+                    querystring={'blockId': self.last_created_block.block_id}
                 )
 
         self.question_list.append(resp['result']['QuestionID'])

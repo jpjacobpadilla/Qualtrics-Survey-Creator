@@ -1,4 +1,4 @@
-from utils import block_info
+from survey_creator.utils import block_info
 
 
 class CreateBlockMixin:
