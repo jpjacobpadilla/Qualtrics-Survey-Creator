@@ -42,8 +42,6 @@ class Creator(
                        put the Qualtrics block into.
         last_created_block: when create_block() is called, last_created_block 
                             will be set to that block.
-        block_info: A NamedTuple that holds the block's 
-                    block_id and it's flow_id
         base_url: Qualtrics base url for requests
         api_key: Qualtrics api key
         logger: A logging object that works.
@@ -77,12 +75,11 @@ class Creator(
             5: []
         }
         self.block_counter: int = 1
-        self.block_info = namedtuple('block_info', ['block_id', 'flow_id'])
         self.last_created_block: str = None
         
         # question list for each block
         self.question_list = []
-        
+
         # Qualtrics base url
         self.base_url = f'https://{data_center_id}.qualtrics.com/API/v3/'
 
