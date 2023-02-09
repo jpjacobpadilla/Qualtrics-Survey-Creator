@@ -1,20 +1,31 @@
-class matrix_options
+from typing import Callable
 
+
+class matrix_options:
+    """Log matrix bodies."""
+    
+    def __init__(self):
+        self.options: dict[str, Callable] = {}
+
+    def __getitem__(self, item):
+        return self.options[item]
+
+    def route(self, opt):
+        def decorator(f):
+            self.options[opt] = f
+            return f
+        return decorator 
 
 
 class MatrixQuestionMixin:
     def __init__(self, *args, **kwargs):
-        matrix_options = matrix_options()
+        self.matrix_options = matrix_options()
         super.__init__(*args, **kwargs)
 
     def add_matrix_question(self, option: int, question_text: str, desc: str) -> None:
+        matrix_func = self.matrix_options[option]
 
-
-        body = self._matrix_question(
-                        text=question_text,
-                        desc=desc, 
-                        data_export_tag=desc, 
-                    )
+        body = matrix_func(text=question_text, desc=desc, data_export_tag=desc)
         
         resp = self._make_qualtrics_request(
                     method='post', 
@@ -27,7 +38,7 @@ class MatrixQuestionMixin:
 
     @staticmethod
     @matrix_options.add(1)
-    def matrix_question_1(text: str, desc, data_export_tag) -> dict:
+    def matrix_question_1(text: str, desc: str, data_export_tag: str) -> dict:
         """
         "choices" are the vertical options (on the left)
         "answers" are the horizontal options (on top)
