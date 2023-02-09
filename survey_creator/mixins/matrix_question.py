@@ -1,13 +1,26 @@
 class MatrixQuestionMixin:
-    def add_matrix_question() -> None:
-        pass
+    def add_matrix_question(self, question_text: str, desc: str) -> None:
+        body = self._text_description_question(
+                        qtext=question_text,
+                        data_export_tag=desc, 
+                        question_desc=desc, 
+                    )
+        
+        resp = self._make_qualtrics_request(
+                    method='post', 
+                    endpoint=self.question_url, 
+                    json_dump=body,
+                    querystring={'blockId': self.last_created_block.block_id}
+                )
+
+        self.question_list.append(resp['result']['QuestionID'])
 
     @staticmethod
-    def _create_matrix_body() -> dict:
+    def _create_matrix_body(qtext: str, data_export_tag: str, question_desc: str) -> dict:
         return {
-            'QuestionText': 'On a scale of 1-7, to what extent is Person 1 ________?',
+            'QuestionText': qtext,
             'DefaultChoices': False,
-            'DataExportTag': '51_conv_like_p1',
+            'DataExportTag': data_export_tag,
             'QuestionType': 'Matrix',
             'Selector': 'Likert',
             'SubSelector': 'SingleAnswer',
@@ -23,7 +36,7 @@ class MatrixQuestionMixin:
                 'WhiteSpace': 'OFF',
                 'MobileFirst': True
                 },
-            'QuestionDescription': 'On a scale of 1-7, to what extent is Person 1 ________?',
+            'QuestionDescription': question_desc,
             'Choices': {
                 '2': {
                     'Display': 'likable'
@@ -48,5 +61,5 @@ class MatrixQuestionMixin:
                 },
             'Language': [],
             'QuestionID': 'QID469',
-            'QuestionText_Unsafe': 'On a scale of 1-7, to what extent is Person 1 ________?'
+            'QuestionText_Unsafe': qtext
         }
