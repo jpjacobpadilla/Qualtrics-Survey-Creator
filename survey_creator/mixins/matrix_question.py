@@ -2,7 +2,7 @@ from typing import Callable
 
 
 class matrix_options:
-    """Log matrix bodies."""
+    """Log matrix bodies"""
 
     def __init__(self):
         self.options: dict[str, Callable] = {}
@@ -47,33 +47,29 @@ class MatrixQuestionMixin:
                     "3":"2",
                     "4":"3",
                     "5":"4",
-                    "6":"5",
-                    "7":"6",
+                    "6":"5"
                     },
                 "Answers":{
                     "1":{
-                        "Display": 'Happy'
+                        "Display": '1-Not At All'
                     },
                     "2":{
-                        "Display": 'Friendly'
+                        "Display": '2'
                     },
                     "3":{
-                        "Display": 'Someone you would enjoy chatting with'
+                        "Display": '3'
                     },
                     "4":{
-                        "Display": 'Calm'
+                        "Display": '4'
                     },
                     "5":{
-                        "Display": 'someone you would like to be friends with'
+                        "Display": '5'
                     },
                     "6":{
-                        "Display": 'Likeable'
+                        "Display": '6'
                     },
                     "7":{
-                        "Display": 'Sad'
-                    },
-                    "8":{
-                        "Display": 'Excited'
+                        "Display": '7-Extremely'
                     }
                     },
                     "AnswerOrder":[
@@ -98,31 +94,34 @@ class MatrixQuestionMixin:
                     ],
                 "Choices":{
                     "1":{
-                        "Display": '1-Not At All'
+                        "Display": 'Happy'
                     },
                     "2":{
-                        "Display": '2'
+                        "Display": 'Friendly'
                     },
                     "3":{
-                        "Display": '3'
+                        "Display": 'Someone you would enjoy chatting with'
                     },
                     "4":{
-                        "Display": '4'
+                        "Display": 'Calm'
                     },
                     "5":{
-                        "Display": '5'
+                        "Display": 'someone you would like to be friends with'
                     },
                     "6":{
-                        "Display": '6'
+                        "Display": 'Likeable'
                     },
                     "7":{
-                        "Display": '7-Extremely'
+                        "Display": 'Sad'
                     },
+                    "8":{
+                        "Display": 'Excited'
+                    }
                 },
                 "Configuration":{
                     "QuestionDescriptionOption":"UseText",
                     "TextPosition":"inline",
-                    "ChoiceColumnWidth":25,
+                    "ChoiceColumnWidth": 25,
                     "RepeatHeaders":"none",
                     "WhiteSpace":"OFF",
                     "MobileFirst":True,
