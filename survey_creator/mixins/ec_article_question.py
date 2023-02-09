@@ -37,7 +37,7 @@ class ECArticleQuestionMixin(BaseTextQuestion):
         self.question_list.append(resp['result']['QuestionID'])
 
     @staticmethod
-    def _article_text(title, body):
+    def _article_text(title, body) -> str:
         return f'''<h1 style="line-height: 60px; color: black;"><strong>{title}</strong></h1>&nbsp;<p >{body}</p>'''
     
     @staticmethod

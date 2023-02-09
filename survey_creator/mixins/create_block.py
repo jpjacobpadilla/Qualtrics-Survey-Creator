@@ -22,7 +22,7 @@ class CreateBlockMixin:
         self.last_created_block = temp_block_info
 
     @staticmethod
-    def _block_body(desc):
+    def _block_body(desc) -> dict:
         return {
             "Type": "Standard",
             "Description": desc
