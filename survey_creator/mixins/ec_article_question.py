@@ -1,11 +1,26 @@
 from sqlalchemy import text
 from .base_classes.base_text_question import BaseTextQuestion
+from sqlalchemy.engine.base import Engine
+
 
 class ECArticleQuestionMixin(BaseTextQuestion):
-    def add_ec_article_text_question(self, question_text: str, desc: str) -> None:
+    def add_ec_article_text_question(self, question_text: str, desc: str, db: Engine) -> None:
         """
         Creates a Qualtrics "text/Graphic" question.
         """
+        query = text('''
+        select ai.title, ai.text 
+        from article_info as ai
+        inner join conversations as c on ai.article_id=c.article_id
+        where c.conversation_id = :conv_id
+        limit 1;
+        ''')
+    
+        with db.connect() as conn:
+            title, article_body = conn.execute(query, {'conv_id': conversation_id}).first()
+
+        formatted_article = self._article_formatter(number_of_sentences=7, text=article_body)
+
         body = self._text_description_question(
                         qtext=question_text,
                         data_export_tag=desc, 
@@ -21,31 +36,28 @@ class ECArticleQuestionMixin(BaseTextQuestion):
 
         self.question_list.append(resp['result']['QuestionID'])
 
-    
     @staticmethod
-    def _empathic_conversation_article_text_question(self, db):
-        query = text('''
-        select ai.title, ai.text 
-        from article_info as ai
-        inner join conversations as c on ai.article_id=c.article_id
-        where c.conversation_id = :conv_id
-        limit 1;
-        ''')
-    
-        with db.connect() as conn:
-            title, article_body = conn.execute(query, {'conv_id': conversation_id}).first()
+    def _article_formatter(text: str, number_of_sentences: int = 5) -> str:
+        """Takes article and returns x number of sentences from top of article"""
+        punctuation = ['.', '?', '!']
+        new_text = ''
+        count = 0
+        letter_check = False
 
-        formatted_article = article_formatter(number_of_sentences=7, text=article_body)
+        for letter in text.strip():
+            new_text += letter
 
-        resp = requester('post',
-                        question_url.format(survey_id_placeholder=survey_id), 
-                        text_description_question(
-                            qtext=article_text(title, formatted_article),
-                            data_export_tag=f'{conversation_id}_article', 
-                            question_desc=f'{conversation_id}_article'), 
-                        querystring={'blockId': block_id})
-        
-        q_list.append(resp['result']['QuestionID'])
+            if letter_check and letter == ' ':
+                count += 1
+
+            letter_check = False
+            if letter in punctuation:
+                letter_check = True
+
+            if count >= number_of_sentences:
+                break
+
+        return new_text
 
     
 
