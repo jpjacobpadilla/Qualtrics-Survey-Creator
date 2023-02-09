@@ -1,0 +1,2 @@
+class BaseTextQuestion:
+    pass

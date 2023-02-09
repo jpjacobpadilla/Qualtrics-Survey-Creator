@@ -3,16 +3,18 @@ import threading
 from collections import namedtuple
 import requests
 from .exceptions import RequestFailed
+
 from .mixins.create_block import CreateBlockMixin
 from .mixins.multiple_choice_question import MultipleChoiceQuestionMixin
 from .mixins.text_question import TextQuestionMixin
 from .mixins.likart_question import LikartQuestionMixin
-
+from .mixins.ec_article_question import ECArticleQuestionMixin
 
 class Creator(
     CreateBlockMixin,
-    MultipleChoiceQuestionMixin,
     TextQuestionMixin,
+    ECArticleQuestionMixin,
+    MultipleChoiceQuestionMixin,
     LikartQuestionMixin,
     threading.Thread
     ):
