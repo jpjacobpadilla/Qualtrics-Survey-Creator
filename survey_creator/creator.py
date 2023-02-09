@@ -29,7 +29,7 @@ class Creator(
 
     The first method called should be create_block(). This will
     then allow you to create questions, which will be added to the block.
-    
+
     Instance Attributes:
         survey_id: the Qualtrics survey id (used to send requests to Qualtrics)
         blocks: Each Qualtrics block is put into a "bucket" so that the blocks can 
@@ -79,6 +79,9 @@ class Creator(
         self.block_counter: int = 1
         self.block_info = namedtuple('block_info', ['block_id', 'flow_id'])
         self.last_created_block: str = None
+        
+        # question list for each block
+        self.question_list = []
         
         # Qualtrics base url
         self.base_url = f'https://{data_center_id}.qualtrics.com/API/v3/'
