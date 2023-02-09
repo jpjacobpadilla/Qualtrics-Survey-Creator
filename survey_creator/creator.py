@@ -93,6 +93,18 @@ class Creator(
         super().__init__(*args, **kwargs)
     
     def _make_qualtrics_request(self, method: str, endpoint: str, json_dump, **kwargs):
+        """
+        Makes a request to Qualtrics
+
+        Params:
+            method: HTTP request method
+            endpoint: One of the two class vars. This method will automatically
+                      add the current survey_id
+            json_dump: data to be turned into json
+            
+            **kwargs: 
+                querystring: This is usually the block_id 
+        """
         assert method.lower() in ['post', 'put', 'get', 'delete'], 'Invalid request method.'
 
         endpoint = endpoint.format(survey_id_placeholder=self.survey_id)
