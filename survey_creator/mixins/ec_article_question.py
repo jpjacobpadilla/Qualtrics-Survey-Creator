@@ -4,7 +4,8 @@ from sqlalchemy.engine.base import Engine
 
 
 class ECArticleQuestionMixin(BaseTextQuestion):
-    def add_ec_article_text_question(self, question_text: str, desc: str, db: Engine) -> None:
+    def add_ec_article_text_question(self, conversation_id: int, question_text: str, 
+            desc: str, db: Engine) -> None:
         """
         Creates a Qualtrics "text/Graphic" question.
         """
@@ -22,7 +23,7 @@ class ECArticleQuestionMixin(BaseTextQuestion):
         formatted_article = self._article_formatter(number_of_sentences=7, text=article_body)
 
         body = self._text_description_question(
-                        qtext=question_text,
+                        qtext=self._article_text(title, formatted_article),
                         data_export_tag=desc, 
                         question_desc=desc, 
                     )
@@ -36,6 +37,10 @@ class ECArticleQuestionMixin(BaseTextQuestion):
 
         self.question_list.append(resp['result']['QuestionID'])
 
+    @staticmethod
+    def _article_text(title, body):
+        return f'''<h1 style="line-height: 60px; color: black;"><strong>{title}</strong></h1>&nbsp;<p >{body}</p>'''
+    
     @staticmethod
     def _article_formatter(text: str, number_of_sentences: int = 5) -> str:
         """Takes article and returns x number of sentences from top of article"""
