@@ -27,6 +27,9 @@ class Creator(
     This class inherits from the threading class, so that
     multiple surveys can be made at the same time.
 
+    The first method called should be create_block(). This will
+    then allow you to create questions, which will be added to the block.
+    
     Instance Attributes:
         survey_id: the Qualtrics survey id (used to send requests to Qualtrics)
         blocks: Each Qualtrics block is put into a "bucket" so that the blocks can 
