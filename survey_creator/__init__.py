@@ -54,8 +54,6 @@ class Creator(
             Qualtrics base url for requests
         api_key: 
             Qualtrics api key
-        logger: 
-            A logging object that works.
 
     Class Attributes:
         blocks_url: 
