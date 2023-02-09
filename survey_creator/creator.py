@@ -77,7 +77,8 @@ class Creator(
         self.block_counter: int = 1
         self.last_created_block: str = None
         
-        # question list for each block
+        # question list for each block. 
+        # TODO: This may be better as a Queue
         self.question_list = []
 
         # Qualtrics base url
