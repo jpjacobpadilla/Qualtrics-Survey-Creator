@@ -5,9 +5,7 @@ import requests
 from .exceptions import RequestFailed
 
 from .mixins.create_block import CreateBlockMixin
-from .mixins.multiple_choice_question import MultipleChoiceQuestionMixin
 from .mixins.text_question import TextQuestionMixin
-from .mixins.likart_question import LikartQuestionMixin
 from .mixins.ec_article_question import ECArticleQuestionMixin
 from .mixins.ec_turn_lvl_convo_text_question import ECTurnLVLConvoQuestionMixin
 
@@ -16,8 +14,6 @@ class Creator(
     TextQuestionMixin,
     ECArticleQuestionMixin,
     ECTurnLVLConvoQuestionMixin,
-    MultipleChoiceQuestionMixin,
-    LikartQuestionMixin,
     threading.Thread
     ):
     """
