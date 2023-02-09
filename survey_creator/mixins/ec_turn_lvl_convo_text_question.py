@@ -5,8 +5,8 @@ from pretty_html_table import build_table
 from .base_classes.base_text_question import BaseTextQuestion
 
 
-class ECArticleQuestionMixin(BaseTextQuestion):
-    def add_ec_article_text_question(self, db: Engine, conversation_id: int, desc: str) -> None:
+class ECTurnLVLConvoQuestionMixin(BaseTextQuestion):
+    def add_ec_turn_lvl_convo(self, db: Engine, conversation_id: int, desc: str) -> None:
         """
         Creates a Qualtrics "text/Graphic" question.
         """
