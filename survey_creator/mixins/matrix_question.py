@@ -3,14 +3,14 @@ from typing import Callable
 
 class matrix_options:
     """Log matrix bodies."""
-    
+
     def __init__(self):
         self.options: dict[str, Callable] = {}
 
     def __getitem__(self, item):
         return self.options[item]
 
-    def route(self, opt):
+    def add(self, opt):
         def decorator(f):
             self.options[opt] = f
             return f
@@ -18,9 +18,8 @@ class matrix_options:
 
 
 class MatrixQuestionMixin:
-    def __init__(self, *args, **kwargs):
-        self.matrix_options = matrix_options()
-        super.__init__(*args, **kwargs)
+
+    matrix_options = matrix_options()
 
     def add_matrix_question(self, option: int, question_text: str, desc: str) -> None:
         matrix_func = self.matrix_options[option]
@@ -36,7 +35,6 @@ class MatrixQuestionMixin:
 
         self.question_list.append(resp['result']['QuestionID'])
 
-    @staticmethod
     @matrix_options.add(1)
     def matrix_question_1(text: str, desc: str, data_export_tag: str) -> dict:
         """
