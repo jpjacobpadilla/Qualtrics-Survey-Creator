@@ -11,7 +11,7 @@ from .mixins.ec_turn_lvl_convo_text_question import ECTurnLVLConvoQuestionMixin
 from .mixins.matrix_question import MatrixQuestionMixin
 from .mixins.attention_check_question import AttentionCheckQuestionMixin
 from .mixins.page_timer import PageTimerMixin
-from mixins.page_break import PageBreak
+from .mixins.page_break import PageBreak
 
 class Creator(
     CreateBlockMixin,
@@ -89,7 +89,7 @@ class Creator(
         self.block_counter: int = 1
         self.last_created_block: str = None
         
-        # question list for each block. 
+        # list of question id's for each block. 
         self.question_list = []
 
         # Qualtrics base url
@@ -127,7 +127,7 @@ class Creator(
 
         response = requests.request(
                 method.lower(),
-                self.base_url + endpoint, 
+                self.base_url + endpoint + kwargs.get('extra_endpoint', ''), 
                 data = json.dumps(json_dump), 
                 headers = self.headers, 
                 params = kwargs.get('querystring', None),

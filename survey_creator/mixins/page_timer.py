@@ -4,7 +4,7 @@ class PageTimerMixin:
         super().__init__(*args, **kwargs)
 
     def add_page_timer(self) -> None:
-        desc = f'page_break_{self.page_timer_num}'
+        desc = f'page_timer_{self.page_timer_num}'
         self.page_timer_num += 1
 
         body = {

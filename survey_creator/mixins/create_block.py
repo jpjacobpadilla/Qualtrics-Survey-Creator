@@ -2,10 +2,16 @@ from survey_creator.utils import block_info
 
 
 class CreateBlockMixin:
+    def __init__(self, *args, **kwargs):
+        self.last_block_desc = None
+        super().__init__(*args, **kwargs)
+        
     def create_block(self, desc: str) -> None:
+        self.last_block_desc = desc
+
         """
         Creates a Qualtrics block and assigns self.last_created_block to the 
-        block just created, incraments block_counter, 
+        block just created, increments block_counter, 
         and adds block to self.blocks
         """
         resp = self._make_qualtrics_request(
@@ -22,7 +28,7 @@ class CreateBlockMixin:
         self.last_created_block = temp_block_info
 
         return resp 
-        
+
     @staticmethod
     def _block_body(desc) -> dict:
         return {
