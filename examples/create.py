@@ -56,6 +56,8 @@ def create_survey(survey_index):
         sc.add_page_timer_question()
         sc.add_page_break_questions()
 
+        sc.add_ec_article_text_question(db=engine, conversation_id=conversation_id, desc=f'{conversation_id}_article')
+        sc.add_ec_turn_lvl_convo(db=engine, conversation_id=conversation_id, desc=f'{conversation_id}_turn_lvl_convo')
         if sc.block_counter == 4: sc.add_attention_check(question_text=AC_2_TEXT, choices=AC_2_CHOICES) 
         sc.add_matrix_question(template=1, question_text=QUESTION_TWO_PERSON_2_TEXT, desc=f'{conversation_id}_conv_like_p2')
         if sc.block_counter == 5: sc.add_attention_check(question_text=AC_2_TEXT, choices=AC_2_CHOICES) 
