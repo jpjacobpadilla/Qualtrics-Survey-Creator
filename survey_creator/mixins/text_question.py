@@ -2,7 +2,7 @@ from .base_classes.base_text_question import BaseTextQuestion
 
 
 class TextQuestionMixin(BaseTextQuestion):
-    def add_text_question(self, question_text: str, desc: str) -> None:
+    def add_text_question(self, question_text: str, desc: str) -> dict:
         """
         Creates a Qualtrics "text/Graphic" question.
         """

@@ -6,7 +6,7 @@ class CreateBlockMixin:
         self.last_block_desc = None
         super().__init__(*args, **kwargs)
         
-    def create_block(self, desc: str) -> None:
+    def create_block(self, desc: str) -> dict:
         self.last_block_desc = desc
 
         """
@@ -18,7 +18,7 @@ class CreateBlockMixin:
                     method='post', 
                     endpoint=self.blocks_url, 
                     json_dump=self._block_body(desc=desc)
-                    )
+                )
         block_id = resp['result']['BlockID']
         flow_id = 'FL_' + str(int(resp['result']['FlowID'].split('_')[-1]) + 101)
 

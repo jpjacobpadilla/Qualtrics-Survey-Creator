@@ -3,7 +3,7 @@ class PageTimerQuestionMixin:
         self.page_timer_num: int = 1
         super().__init__(*args, **kwargs)
 
-    def add_page_timer_question(self) -> None:
+    def add_page_timer_question(self) -> dict:
         desc = f'page_timer_{self.page_timer_num}'
         self.page_timer_num += 1
 

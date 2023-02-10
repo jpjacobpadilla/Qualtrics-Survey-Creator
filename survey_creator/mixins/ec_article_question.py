@@ -4,7 +4,7 @@ from sqlalchemy.engine.base import Engine
 
 
 class ECArticleQuestionMixin(BaseTextQuestion):
-    def add_ec_article_text_question(self, db: Engine, conversation_id: int, desc: str) -> None:
+    def add_ec_article_text_question(self, db: Engine, conversation_id: int, desc: str) -> dict:
         """
         Creates a Qualtrics "text/Graphic" question.
         """
@@ -36,7 +36,7 @@ class ECArticleQuestionMixin(BaseTextQuestion):
 
         self.question_list.append(resp['result']['QuestionID'])
         return resp 
-        
+
     @staticmethod
     def _article_text(title, body) -> str:
         return f'''<h1 style="line-height: 60px; color: black;"><strong>{title}</strong></h1>&nbsp;<p >{body}</p>'''

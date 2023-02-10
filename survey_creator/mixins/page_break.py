@@ -3,7 +3,7 @@ class PageBreakQuestionMixin:
         self.page_break_num: int = 1
         super().__init__(*args, **kwargs)
 
-    def add_page_break_questions(self):
+    def add_page_break_questions(self) -> dict:
 
         base = {'Type':'Standard',
                 "Description": self.last_block_desc,

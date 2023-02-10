@@ -6,7 +6,7 @@ from .base_classes.base_text_question import BaseTextQuestion
 
 
 class ECTurnLVLConvoQuestionMixin(BaseTextQuestion):
-    def add_ec_turn_lvl_convo(self, db: Engine, conversation_id: int, desc: str) -> None:
+    def add_ec_turn_lvl_convo(self, db: Engine, conversation_id: int, desc: str) -> dict:
         """
         Creates a Qualtrics "text/Graphic" question.
         """

@@ -21,7 +21,7 @@ class MatrixQuestionMixin:
 
     matrix_template = matrix_template()
 
-    def add_matrix_question(self, template: int, question_text: str, desc: str) -> None:
+    def add_matrix_question(self, template: int, question_text: str, desc: str) -> dict:
         matrix_func = self.matrix_template[template]
 
         body = matrix_func(text=question_text, desc=desc, data_export_tag=desc)
