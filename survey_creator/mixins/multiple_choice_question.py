@@ -1,23 +1,16 @@
-import random
 from .base_classes.base_multiple_choice_question import BaseMultipleChoiceQuestion
 
 
-class AttentionCheckQuestionMixin(BaseMultipleChoiceQuestion):
-    def __init__(self, *args, **kwargs):
-        self.attention_check_num: int = 1
-        super().__init__(*args, **kwargs)
-   
-    def add_attention_check(self, question_text: str, choices: list) -> dict:
-        desc = f'Attention_check_{self.attention_check_num}'
-        self.attention_check_num += 1
-
+class MultipleChoiceQuestionMixin(BaseMultipleChoiceQuestion):
+    def add_mc_question(self, question_text: str, desc: str, 
+            choices: list, direction:str) -> dict:
         body = self._multiple_choice_question(
                 qtext=question_text,
-                direction = random.choice(('vertical', 'horizontal')),
+                direction = direction,
                 choices=choices,
                 desc=desc
             )
-
+        
         resp = self._make_qualtrics_request(
                     method='post', 
                     endpoint=self.question_url, 
@@ -27,4 +20,3 @@ class AttentionCheckQuestionMixin(BaseMultipleChoiceQuestion):
 
         self.question_list.append(resp['result']['QuestionID'])
         return resp  
-        

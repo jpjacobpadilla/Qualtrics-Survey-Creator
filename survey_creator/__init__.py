@@ -1,17 +1,19 @@
 import json
+import requests
 import threading
 from collections import namedtuple
-import requests
+
 from .exceptions import RequestFailed
 
 from .mixins.create_block import CreateBlockMixin
 from .mixins.text_question import TextQuestionMixin
-from .mixins.ec_article_question import ECArticleQuestionMixin
-from .mixins.ec_turn_lvl_convo_text_question import ECTurnLVLConvoQuestionMixin
 from .mixins.matrix_question import MatrixQuestionMixin
 from .mixins.attention_check_question import AttentionCheckQuestionMixin
 from .mixins.page_timer import PageTimerQuestionMixin
 from .mixins.page_break import PageBreakQuestionMixin
+from .mixins.multiple_choice_question import MultipleChoiceQuestionMixin
+from .mixins.ec_article_question import ECArticleQuestionMixin
+from .mixins.ec_turn_lvl_convo_text_question import ECTurnLVLConvoQuestionMixin
 
 class Creator(
     CreateBlockMixin,
@@ -22,6 +24,7 @@ class Creator(
     AttentionCheckQuestionMixin,
     PageTimerQuestionMixin,
     PageBreakQuestionMixin,
+    MultipleChoiceQuestionMixin,
     threading.Thread
     ):
     """
