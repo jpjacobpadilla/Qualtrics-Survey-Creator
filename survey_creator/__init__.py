@@ -30,20 +30,17 @@ class Creator(
     """
     This object handles the creation of single survey
 
-    The general steps for creating one survey:
-        1. Create 50 blocks per survey 
-        2. Add questions to block
-        3. Apply randomized flow
-
-    This class inherits from the threading class, so that
-    multiple surveys can be made at the same time.
-
     The first method called should be create_block(). This will
     then allow you to create questions, which will be added to the block.
- 
+    
+    When you create a block, it is added to self.block, which is 
+    essentially a way to sort the blocks into 5 buckets. When you apply flow to the blocks,
+    the idea is that there will be 5 "randomizer flow blocks" in Qualtrics, and thus a worker will see
+    one random block from each of the 5 blocks. This allows you to easily control where attention checks are shown.
+
     Instance Attributes:
         survey_id: 
-            The Qualtrics survey id (used to send requests to Qualtrics)
+            The Qualtrics survey id (used to send requests to Qualtrics).
         blocks: 
             Each Qualtrics block is put into a "bucket" so that the blocks can 
             be given flow in the flow function later
@@ -58,15 +55,19 @@ class Creator(
             when create_block() is called, last_created_block 
             will be set to that block.
         base_url: 
-            Qualtrics base url for requests
+            Qualtrics base url for requests.
         api_key: 
-            Qualtrics api key
+            Qualtrics api key.
+        headers: 
+            Headers for the Qualtrics API.
 
     Class Attributes:
         blocks_url: 
             A Qualtrics endpoint. Use to create blocks.
         question_url: 
-            A Qualtrics endpoint. Use to create questions
+            A Qualtrics endpoint. Use to create questions.
+        flow_url:
+            A Qualtrics endpoint. Use to apply flow.
     """
 
     # Qualtrics endpoints
