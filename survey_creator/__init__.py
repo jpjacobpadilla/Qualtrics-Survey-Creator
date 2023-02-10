@@ -1,6 +1,5 @@
 import json
 import requests
-import threading
 from collections import namedtuple
 
 from .exceptions import RequestFailed
@@ -26,8 +25,7 @@ class Creator(
     PageTimerQuestionMixin,
     PageBreakQuestionMixin,
     MultipleChoiceQuestionMixin,
-    ApplyFlowMixin,
-    threading.Thread
+    ApplyFlowMixin
     ):
     """
     This object handles the creation of single survey

@@ -8,13 +8,12 @@ from secret import (
     db_user
 )
 from question_text import (
-    QUESTION_ONE_TEXT, QUESTION_TWO_PERSON_1_TEXT, 
+    QUESTION_TWO_PERSON_1_TEXT, 
     QUESTION_TWO_PERSON_2_TEXT,
     AC_2_CHOICES, AC_1_CHOICES,
     AC_2_TEXT, AC_1_TEXT,
     MC_1_TEXT_CHOICES, MC_1_TEXT
 )
-
 
 # SQLAlchemy engine for research MySQL server
 conn_string = 'mysql+pymysql://{user}:{password}@{host}:{port}/{db}?charset:{encoding}'.format(
@@ -35,6 +34,12 @@ list_of_survey_ids = ['SV_cFODjwlDXy7fybc']
 
 for survey_index, survey_id in enumerate(list_of_survey_ids):
     # This is for the SQL queries to get the correct conversations
+
+    
+
+print('done!')
+
+def create_survey(survey_index):
     conversation_id_queue = mod_ten_conversation_id_list(survey_index + 1)
     
     sc = Creator(survey_id=survey_id, data_center_id=data_center_id, api_key=api_key)
@@ -63,5 +68,3 @@ for survey_index, survey_id in enumerate(list_of_survey_ids):
         sc.add_page_timer_question()
 
     sc.apply_generic_flow()
-
-print('done!')
