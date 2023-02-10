@@ -1,5 +1,11 @@
 class BaseTextQuestion:
-    """methods that all text based question mixins need"""
+    """
+    Methods that all text based question mixins need.
+    
+    Currently this is only a staticmethod, but I made it a parent class 
+    so that I can easily add more features in the future to text
+    based questions.
+    """
     
     @staticmethod
     def _text_description_question(qtext: str, data_export_tag: str, question_desc: str) -> dict:
