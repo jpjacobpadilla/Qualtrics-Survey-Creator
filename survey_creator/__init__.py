@@ -10,7 +10,8 @@ from .mixins.ec_article_question import ECArticleQuestionMixin
 from .mixins.ec_turn_lvl_convo_text_question import ECTurnLVLConvoQuestionMixin
 from .mixins.matrix_question import MatrixQuestionMixin
 from .mixins.attention_check_question import AttentionCheckQuestionMixin
-
+from .mixins.page_timer import PageTimerMixin
+from mixins.page_break import PageBreak
 
 class Creator(
     CreateBlockMixin,
@@ -19,6 +20,8 @@ class Creator(
     ECTurnLVLConvoQuestionMixin,
     MatrixQuestionMixin,
     AttentionCheckQuestionMixin,
+    PageTimerMixin,
+    PageBreak,
     threading.Thread
     ):
     """
