@@ -9,7 +9,7 @@ class ApplyFlowMixin:
     a survey taker will only see one question from each block.
     """
 
-    def apply_generic_flow(self):
+    def apply_generic_flow(self) -> dict:
         body = self.flow_request_body()
 
         resp = self._make_qualtrics_request(
@@ -17,6 +17,8 @@ class ApplyFlowMixin:
                     endpoint=self.flow_url, 
                     json_dump=body
                 )
+
+        return resp
 
     def flow_request_body(self):
         
