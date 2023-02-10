@@ -4,6 +4,8 @@ from survey_creator.utils import block_info
 class CreateBlockMixin:
     def __init__(self, *args, **kwargs):
         self.last_block_desc = None
+        self.question_list = None
+        
         super().__init__(*args, **kwargs)
         
     def create_block(self, desc: str) -> dict:
@@ -27,6 +29,8 @@ class CreateBlockMixin:
         self.block_counter = self.block_counter % 5 + 1
         self.blocks[self.block_counter].append(temp_block_info)
         self.last_created_block = temp_block_info
+
+        self.question_list = []
 
         return resp 
 
