@@ -14,6 +14,7 @@ from .mixins.page_break import PageBreakQuestionMixin
 from .mixins.multiple_choice_question import MultipleChoiceQuestionMixin
 from .mixins.ec_article_question import ECArticleQuestionMixin
 from .mixins.ec_turn_lvl_convo_text_question import ECTurnLVLConvoQuestionMixin
+from .mixins.apply_flow import ApplyFlowMixin
 
 class Creator(
     CreateBlockMixin,
@@ -25,6 +26,7 @@ class Creator(
     PageTimerQuestionMixin,
     PageBreakQuestionMixin,
     MultipleChoiceQuestionMixin,
+    ApplyFlowMixin,
     threading.Thread
     ):
     """
@@ -72,7 +74,8 @@ class Creator(
     # Qualtrics endpoints
     blocks_url = 'survey-definitions/{survey_id_placeholder}/blocks'
     question_url = 'survey-definitions/{survey_id_placeholder}/questions'
-
+    flow_url = 'survey-definitions/{survey_id}/flow'
+    
     def __init__(
             self, 
             survey_id: str, 
