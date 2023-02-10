@@ -35,6 +35,7 @@ class MatrixQuestionMixin:
 
         self.question_list.append(resp['result']['QuestionID'])
 
+    @staticmethod
     @matrix_options.add(1)
     def matrix_question_1(text: str, desc: str, data_export_tag: str) -> dict:
         """
