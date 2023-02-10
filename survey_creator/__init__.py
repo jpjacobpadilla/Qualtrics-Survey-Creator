@@ -89,7 +89,7 @@ class Creator(
 
         # Block stuff
         self.blocks: dict = {1: [], 2: [], 3: [], 4: [], 5: []}
-        self.block_counter: int = 1
+        self.block_counter: int = 0
         self.last_created_block: str = None
         
         # list of question id's for each block. 
