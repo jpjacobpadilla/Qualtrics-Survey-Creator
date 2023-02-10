@@ -9,6 +9,7 @@ from .mixins.text_question import TextQuestionMixin
 from .mixins.ec_article_question import ECArticleQuestionMixin
 from .mixins.ec_turn_lvl_convo_text_question import ECTurnLVLConvoQuestionMixin
 from .mixins.matrix_question import MatrixQuestionMixin
+from .mixins.attention_check_question import AttentionCheckQuestionMixin
 
 
 class Creator(
@@ -17,6 +18,7 @@ class Creator(
     ECArticleQuestionMixin,
     ECTurnLVLConvoQuestionMixin,
     MatrixQuestionMixin,
+    AttentionCheckQuestionMixin,
     threading.Thread
     ):
     """
