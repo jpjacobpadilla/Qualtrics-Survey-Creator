@@ -1,28 +1,28 @@
 from typing import Callable
 
 
-class matrix_options:
+class matrix_template:
     """Log matrix bodies"""
 
     def __init__(self):
-        self.options: dict[str, Callable] = {}
+        self.template: dict[str, Callable] = {}
 
     def __getitem__(self, item):
-        return self.options[item]
+        return self.template[item]
 
     def add(self, opt):
         def decorator(f):
-            self.options[opt] = f
+            self.template[opt] = f
             return f
         return decorator 
 
 
 class MatrixQuestionMixin:
 
-    matrix_options = matrix_options()
+    matrix_template = matrix_template()
 
-    def add_matrix_question(self, option: int, question_text: str, desc: str) -> None:
-        matrix_func = self.matrix_options[option]
+    def add_matrix_question(self, template: int, question_text: str, desc: str) -> None:
+        matrix_func = self.matrix_template[template]
 
         body = matrix_func(text=question_text, desc=desc, data_export_tag=desc)
         
@@ -37,7 +37,7 @@ class MatrixQuestionMixin:
         return resp 
 
     @staticmethod
-    @matrix_options.add(1)
+    @matrix_template.add(1)
     def matrix_question_1(text: str, desc: str, data_export_tag: str) -> dict:
         """
         "choices" are the vertical options (on the left)
