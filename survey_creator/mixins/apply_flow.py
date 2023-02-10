@@ -20,8 +20,7 @@ class ApplyFlowMixin:
 
         return resp
 
-    def flow_request_body(self):
-        
+    def flow_request_body(self) -> dict:
         return {'Flow': [{'Autofill': [],
             'FlowID': 'FL_1',
             'ID': 'BL_2gARGw3jgJSAMSO',
