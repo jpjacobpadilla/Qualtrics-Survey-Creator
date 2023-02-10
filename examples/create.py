@@ -8,8 +8,11 @@ from secret import (
     db_user
 )
 from question_text import (
-    question_one_text, question_two_P1_text, 
-    question_two_P2_text
+    QUESTION_ONE_TEXT, QUESTION_TWO_PERSON_1_TEXT, 
+    QUESTION_TWO_PERSON_2_TEXT,
+    AC_2_CHOICES, AC_1_CHOICES,
+    AC_2_TEXT, AC_1_TEXT,
+    MC_1_TEXT_CHOICES, MC_1_TEXT
 )
 
 
@@ -28,7 +31,7 @@ api_key = jacob_key
 data_center_id = 'ca1'
 
 # List of survey id's
-list_of_survey_ids = ['SURVEY_IDS']
+list_of_survey_ids = ['SV_cFODjwlDXy7fybc']
 
 for survey_index, survey_id in enumerate(list_of_survey_ids):
     # This is for the SQL queries to get the correct conversations
@@ -48,17 +51,17 @@ for survey_index, survey_id in enumerate(list_of_survey_ids):
 
         # Create block
         sc.create_block(desc=f'block_{conversation_id}')
-        sc.add_text_question(question_text=question_one_text, desc=f'{conversation_id}_intro')
-        sc.add_ec_article_text_question(db=engine, conversation_id=conversation_id, desc=f'{conversation_id}_article')
-        sc.add_ec_turn_lvl_convo(db=engine, conversation_id=conversation_id, desc=f'{conversation_id}_turn_lvl_convo')
-        sc.add_matrix_question(template=1, question_text=question_two_P1_text, desc=f'{conversation_id}_conv_like_p1')
+        sc.add_matrix_question(template=1, question_text=QUESTION_TWO_PERSON_1_TEXT, desc=f'{conversation_id}_conv_like_p1')
+        if sc.block_counter == 2: sc.add_attention_check(question_text=AC_1_TEXT, choices=AC_1_CHOICES) 
         sc.add_page_timer_question()
         sc.add_page_break_questions()
-        sc.add_matrix_question(template=1, question_text=question_two_P1_text, desc=f'{conversation_id}_conv_like_p1')
+
+        if sc.block_counter == 4: sc.add_attention_check(question_text=AC_2_TEXT, choices=AC_2_CHOICES) 
+        sc.add_matrix_question(template=1, question_text=QUESTION_TWO_PERSON_2_TEXT, desc=f'{conversation_id}_conv_like_p2')
+        if sc.block_counter == 5: sc.add_attention_check(question_text=AC_2_TEXT, choices=AC_2_CHOICES) 
+        sc.add_mc_question(question_text=MC_1_TEXT, choices=MC_1_TEXT_CHOICES, direction='horizontal', desc=f'{conversation_id}_mc_1')
         sc.add_page_timer_question()
-        sc.add_page_break_questions()
-        sc.add_matrix_question(template=1, question_text=question_two_P2_text, desc=f'{conversation_id}_conv_like_p2')
-        sc.add_page_timer_question()
-        break       
+
+    sc.apply_generic_flow()
 
 print('done!')
