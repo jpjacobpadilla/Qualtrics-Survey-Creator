@@ -1,4 +1,5 @@
 import sys
+import concurrent.futures
 from sqlalchemy import create_engine
 from utils import mod_ten_conversation_id_list
 from survey_creator import Creator
@@ -30,14 +31,8 @@ api_key = jacob_key
 data_center_id = 'ca1'
 
 # List of survey id's
-list_of_survey_ids = ['SV_cFODjwlDXy7fybc']
+survey_ids = ['SURVEY_ID','SURVEY_ID','SURVEY_ID']
 
-for survey_index, survey_id in enumerate(list_of_survey_ids):
-    # This is for the SQL queries to get the correct conversations
-
-    
-
-print('done!')
 
 def create_survey(survey_index):
     conversation_id_queue = mod_ten_conversation_id_list(survey_index + 1)
@@ -68,3 +63,12 @@ def create_survey(survey_index):
         sc.add_page_timer_question()
 
     sc.apply_generic_flow()
+
+
+with concurrent.futures.ThreadPoolExecutor(max_workers=5) as executor:
+    futures = [executor.submit(create_survey, id) for id in survey_ids]
+
+    # Wait for all futures to finish
+    concurrent.futures.wait(futures)
+
+print('done!')
