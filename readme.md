@@ -1,12 +1,12 @@
 # **Qualtrics Survey Creator**
 
-## **Setup**
+### **Setup**
 
 ```shell
 pip install -e .
 ```
 
-## **Mixin Classes**
+### **Mixin Classes**
 1. CreateBlockMixin
 2. TextQuestionMixin
 3. ECArticleQuestionMixin
