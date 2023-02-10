@@ -34,6 +34,7 @@ class MatrixQuestionMixin:
                 )
 
         self.question_list.append(resp['result']['QuestionID'])
+        return resp 
 
     @staticmethod
     @matrix_options.add(1)

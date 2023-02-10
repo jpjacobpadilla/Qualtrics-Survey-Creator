@@ -20,4 +20,4 @@ class TextQuestionMixin(BaseTextQuestion):
                 )
 
         self.question_list.append(resp['result']['QuestionID'])
-       
+        return resp  

@@ -6,7 +6,7 @@ class PageTimerMixin:
     def add_page_timer(self) -> None:
         desc = f'page_break_{self.page_timer_num}'
         self.page_timer_num += 1
-        
+
         body = {
             'Choices': {'1': {'Display': 'First Click'},
             '2': {'Display': 'Last Click'},
@@ -33,6 +33,5 @@ class PageTimerMixin:
                 )
 
         self.question_list.append(resp['result']['QuestionID'])
-
         return resp    
  

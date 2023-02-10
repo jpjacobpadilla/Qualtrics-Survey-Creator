@@ -21,6 +21,8 @@ class CreateBlockMixin:
         self.block_counter = self.block_counter % 5 + 1
         self.last_created_block = temp_block_info
 
+        return resp 
+        
     @staticmethod
     def _block_body(desc) -> dict:
         return {
