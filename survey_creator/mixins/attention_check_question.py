@@ -1,4 +1,4 @@
-class AttentionCheckQuestionMixin:
+class AttentionCheckQuestionMixin(BaseMultipleChoiceQuestion):
     def add_attention_check():
         pass
         resp = None
