@@ -32,6 +32,4 @@ Look at the example.
 
 ### Missing files
 
-Contact the creator to get:
-
-secret.py - program secrets
+```secret.py``` - Program secrets. keeps the Qualtrics API key and database credentials.
