@@ -14,7 +14,7 @@ class BaseMultipleChoiceQuestion:
             choices: list[str], desc: str) -> dict:
 
         f_direction = {'vertical': 'SAVR', 'horizontal': 'SAHR'}
-        
+
         base =  {
             'ChoiceOrder': [],
             'Choices': {},
@@ -45,6 +45,6 @@ class BaseMultipleChoiceQuestion:
 
         for index, item in enumerate(choices):
             base['ChoiceOrder'].append(index + 1)
-            base['Choices'].append({index + 1: {'Display': item}})
+            base['Choices'][index + 1] = {'Display': item}
 
         return base
