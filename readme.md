@@ -18,11 +18,14 @@ pip install -e .
 9. MultipleChoiceQuestionMixin
 10. ApplyFlowMixin
 
+And maybe a few more to come in the future!
+
 ### Mixin Parent Classes
 1. BaseMultipleChoiceQuestion
 2. BaseTextQuestion
 
-And maybe a few more to come in the future!
-
 ### **How do you use it?**
+
+There is a lot of documentation in ```survey_creator/__init__.py```
+
 Look at the example.
