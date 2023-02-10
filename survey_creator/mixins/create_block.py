@@ -23,8 +23,9 @@ class CreateBlockMixin:
         flow_id = 'FL_' + str(int(resp['result']['FlowID'].split('_')[-1]) + 101)
 
         temp_block_info = block_info(block_id, flow_id)
-        self.blocks[self.block_counter].append(temp_block_info)
+        
         self.block_counter = self.block_counter % 5 + 1
+        self.blocks[self.block_counter].append(temp_block_info)
         self.last_created_block = temp_block_info
 
         return resp 
