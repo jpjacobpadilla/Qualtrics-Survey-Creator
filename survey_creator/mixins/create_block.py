@@ -5,7 +5,10 @@ class CreateBlockMixin:
     def __init__(self, *args, **kwargs):
         self.last_block_desc = None
         self.question_list = None
-        
+        self.blocks: dict = {1: [], 2: [], 3: [], 4: [], 5: []}
+        self.block_counter: int = 0
+        self.last_created_block: str = None
+
         super().__init__(*args, **kwargs)
         
     def create_block(self, desc: str) -> dict:

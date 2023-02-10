@@ -1,7 +1,7 @@
 from typing import Callable
 
 
-class matrix_template:
+class MatrixTemplate:
     """Log matrix bodies"""
 
     def __init__(self):
@@ -19,7 +19,7 @@ class matrix_template:
 
 class MatrixQuestionMixin:
 
-    matrix_template = matrix_template()
+    matrix_template = MatrixTemplate()
 
     def add_matrix_question(self, template: int, question_text: str, desc: str) -> dict:
         matrix_func = self.matrix_template[template]
