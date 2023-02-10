@@ -35,6 +35,10 @@ class Creator(
     The first method called should be create_block(). This will
     then allow you to create questions, which will be added to the block.
 
+    TODO: Because this class automatically puts the blocks into 5 buckets, the class
+    also automatically adds attention checks (from AttentionCheckQuestionMixin) to 
+    Qualtrics blocks that fall in buckets 2, 4, adn 5.
+    
     Instance Attributes:
         survey_id: 
             The Qualtrics survey id (used to send requests to Qualtrics)
@@ -78,18 +82,11 @@ class Creator(
         self.survey_id: str = survey_id
 
         # Block stuff
-        self.blocks: dict = {
-            1: [], 
-            2: [], 
-            3: [], 
-            4: [], 
-            5: []
-        }
+        self.blocks: dict = {1: [], 2: [], 3: [], 4: [], 5: []}
         self.block_counter: int = 1
         self.last_created_block: str = None
         
         # question list for each block. 
-        # TODO: This may be better as a Queue
         self.question_list = []
 
         # Qualtrics base url
