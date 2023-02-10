@@ -1,9 +1,9 @@
-class PageBreak:
+class PageBreakQuestionMixin:
     def __init__(self, *args, **kwargs):
         self.page_break_num: int = 1
         super().__init__(*args, **kwargs)
 
-    def add_page_break(self):
+    def add_page_break_questions(self):
 
         base = {'Type':'Standard',
                 "Description": self.last_block_desc,
@@ -15,13 +15,14 @@ class PageBreak:
                 }
 
         for question in self.question_list:
-            question_dict = {"Type": "Question", "QuestionID": question}
-            base['BlockElements'].append(question_dict)
+            if question == 'Page Break':
+                base['BlockElements'].append({"Type": "Page Break"})
+            else:
+                question_dict = {"Type": "Question", "QuestionID": question}
+                base['BlockElements'].append(question_dict)
         
         base['BlockElements'].append({"Type": "Page Break"})
-
-        import json
-        print(json.dumps(base, indent=4))
+        self.question_list.append('Page Break')
 
         resp = self._make_qualtrics_request(
             method='put', 
