@@ -43,15 +43,7 @@ class MatrixQuestionMixin:
         "choices" are the vertical options (on the left)
         "answers" are the horizontal options (on top)
         """
-        return {"RecodeValues":{
-                    "1":"0",
-                    "2":"1",
-                    "3":"2",
-                    "4":"3",
-                    "5":"4",
-                    "6":"5"
-                    },
-                "Answers":{
+        return {"Answers":{
                     "1":{
                         "Display": '1-Not At All'
                     },
