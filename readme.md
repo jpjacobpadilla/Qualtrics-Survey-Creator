@@ -29,3 +29,9 @@ And maybe a few more to come in the future!
 There is a lot of documentation in ```survey_creator/__init__.py```
 
 Look at the example.
+
+### Missing files
+
+Contact the creator to get:
+
+secret.py - program secrets
