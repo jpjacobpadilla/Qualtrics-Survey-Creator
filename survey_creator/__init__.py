@@ -74,8 +74,8 @@ class Creator(
     # Qualtrics endpoints
     blocks_url = 'survey-definitions/{survey_id_placeholder}/blocks'
     question_url = 'survey-definitions/{survey_id_placeholder}/questions'
-    flow_url = 'survey-definitions/{survey_id}/flow'
-    
+    flow_url = 'survey-definitions/{survey_id_placeholder}/flow'
+
     def __init__(
             self, 
             survey_id: str, 
