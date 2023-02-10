@@ -40,11 +40,7 @@ class Creator(
 
     The first method called should be create_block(). This will
     then allow you to create questions, which will be added to the block.
-
-    TODO: Because this class automatically puts the blocks into 5 buckets, the class
-    also automatically adds attention checks (from AttentionCheckQuestionMixin) to 
-    Qualtrics blocks that fall in buckets 2, 4, adn 5.
-    
+ 
     Instance Attributes:
         survey_id: 
             The Qualtrics survey id (used to send requests to Qualtrics)
