@@ -92,7 +92,8 @@ class MatrixQuestionMixin:
                     4,
                     5,
                     6,
-                    7
+                    7,
+                    8
                     ],
                 "Choices":{
                     "1":{
