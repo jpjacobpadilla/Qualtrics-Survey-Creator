@@ -1,9 +1,10 @@
+from typing import Union
 from .base_classes.base_multiple_choice_question import BaseMultipleChoiceQuestion
 
 
 class MultipleChoiceQuestionMixin(BaseMultipleChoiceQuestion):
     def add_mc_question(self, question_text: str, desc: str, 
-            choices: list, direction:str) -> dict:
+            choices: list, direction: Union['vertical', 'horizontal']) -> dict:
         body = self._multiple_choice_question(
                 qtext=question_text,
                 direction = direction,
