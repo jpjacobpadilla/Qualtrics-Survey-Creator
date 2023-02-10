@@ -34,7 +34,10 @@ data_center_id = 'ca1'
 survey_ids = ['SURVEY_ID','SURVEY_ID','SURVEY_ID']
 
 
-def create_survey(survey_index):
+def create_survey(survey_info) -> None:
+    survey_index = survey_info[0]
+    survey_id = survey_info[1]
+
     conversation_id_queue = mod_ten_conversation_id_list(survey_index + 1)
     
     sc = Creator(survey_id=survey_id, data_center_id=data_center_id, api_key=api_key)
@@ -68,7 +71,7 @@ def create_survey(survey_index):
 
 
 with concurrent.futures.ThreadPoolExecutor(max_workers=5) as executor:
-    futures = [executor.submit(create_survey, id) for id in survey_ids]
+    futures = [executor.submit(create_survey, (index, id)) for index, id in enumerate(survey_ids)]
 
     # Wait for all futures to finish
     concurrent.futures.wait(futures)
