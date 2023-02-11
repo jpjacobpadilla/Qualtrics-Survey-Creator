@@ -7,7 +7,7 @@ from secret import (
     db_host, db_schema, 
     db_user
 )
-from question_text import (
+from .question_text import (
     QUESTION_ONE_TEXT, QUESTION_TWO_PERSON_1_TEXT, 
     QUESTION_TWO_PERSON_2_TEXT
 )
