@@ -50,7 +50,7 @@ def create_survey(survey_info) -> None:
             print(f'Conversation ID: {conversation_id}')
         else: 
             print("No more conversation ID's in queue!")
-            sys.exit()
+            return
 
         # Create block
         sc.create_block(desc=f'block_{conversation_id}')
