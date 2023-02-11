@@ -15,24 +15,6 @@ from question_text import (
 )
 
 
-# SQLAlchemy engine for research MySQL server
-conn_string = 'mysql+pymysql://{user}:{password}@{host}:{port}/{db}?charset:{encoding}'.format(
-    user=db_user, 
-    password=db_pass, 
-    host=db_host, 
-    port=3306, 
-    db=db_schema,
-    encoding = 'utf-8'
-)
-engine = create_engine(conn_string)
-
-api_key = jacob_key
-data_center_id = 'ca1'
-
-# List of survey ids
-survey_ids = ['SURVEY_ID','SURVEY_ID','SURVEY_ID']
-
-
 def create_survey(survey_info) -> None:
     survey_index = survey_info[0]
     survey_id = survey_info[1]
@@ -69,6 +51,22 @@ def create_survey(survey_info) -> None:
 
     sc.apply_flow_with_template()
 
+
+# SQLAlchemy engine for research MySQL server
+conn_string = 'mysql+pymysql://{user}:{password}@{host}:{port}/{db}?charset:{encoding}'.format(
+    user=db_user, 
+    password=db_pass, 
+    host=db_host, 
+    port=3306, 
+    db=db_schema,
+    encoding = 'utf-8')
+engine = create_engine(conn_string)
+
+api_key = jacob_key
+data_center_id = 'ca1'
+
+# List of survey ids
+survey_ids = ['SURVEY_ID','SURVEY_ID','SURVEY_ID']
 
 with concurrent.futures.ThreadPoolExecutor(max_workers=5) as executor:
     futures = [executor.submit(create_survey, (index, id)) for index, id in enumerate(survey_ids)]
