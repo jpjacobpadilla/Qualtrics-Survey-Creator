@@ -51,7 +51,7 @@ def create_survey(survey_info) -> None:
 
 
 # SQLAlchemy engine for research MySQL server
-conn_string = 'mysql+pymysql://{user}:{password}@{host}:{port}/{db}?charset:{encoding}'.format(
+conn_string = 'mysql://{user}:{password}@{host}:{port}/{db}?charset:{encoding}'.format(
     user=db_user, 
     password=db_pass, 
     host=db_host, 
