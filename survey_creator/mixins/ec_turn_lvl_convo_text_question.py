@@ -12,8 +12,8 @@ class ECTurnLVLConvoQuestionMixin(BaseTextQuestion):
         """
         sql_query = text('''
         select case speaker
-                    when 'Person 2' then 'Person 2'
-                    when 'Person 1' then 'Person 1'
+                    when 'Person 2' then 'Person  2'
+                    when 'Person 1' then 'Person  1'
                end as Speaker,
                text as Utterance
         from conversations
@@ -25,7 +25,7 @@ class ECTurnLVLConvoQuestionMixin(BaseTextQuestion):
             df = pd.read_sql(sql_query, conn, params={'conv_id': conversation_id})
 
         # https://pypi.org/project/pretty-html-table/
-        text_content = build_table(df, 'blue_light', width_dict=['85px','auto'], padding='10px', even_color='black', even_bg_color='white')
+        text_content = build_table(df, 'blue_light', width_dict=['94px','auto'], padding='10px', even_color='black', even_bg_color='white')
         
         for index in range(len(text_content)):
             if index + 2 <= len(text_content) and  text_content[index] == '\\' and text_content[index + 1] != 'n':
