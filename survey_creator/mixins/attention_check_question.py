@@ -15,7 +15,6 @@ class AttentionCheckQuestionMixin(BaseMultipleChoiceQuestion):
         This is helpful in determining the answers to the attention checks when 
         once you have collected the data.
         """
-
         desc = f'AC_{self.attention_check_num}_TYPE_{type}'
         self.attention_check_num += 1
 
