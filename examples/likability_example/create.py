@@ -55,15 +55,16 @@ def create_survey(survey_info) -> None:
 
         sc.create_block(desc=f'{conversation_id}_block')
         sc.add_text_question(question_text=QUESTION_ONE_TEXT, desc=f'{conversation_id}_intro')
+        if sc.block_counter == 3: sc.add_generic_attention_check(opt=3) 
         sc.add_page_timer_question()
         sc.add_page_break_questions()
         
         sc.add_ec_article_text_question(db=engine, conversation_id=conversation_id, desc=f'{conversation_id}_article')
         sc.add_ec_turn_lvl_convo(db=engine, conversation_id=conversation_id, desc=f'{conversation_id}_turn_lvl_convo')
         sc.add_matrix_question(template=1, question_text=QUESTION_TWO_PERSON_1_TEXT, desc=f'{conversation_id}_conv_like_p1')
-        if sc.block_counter == 5: sc.add_attention_check(question_text=AC_1_TEXT, choices=AC_1_CHOICES) 
+        if sc.block_counter == 5: sc.add_attention_check(question_text=AC_1_TEXT, choices=AC_1_CHOICES, type=1) 
         sc.add_matrix_question(template=1, question_text=QUESTION_TWO_PERSON_2_TEXT, desc=f'{conversation_id}_conv_like_p2')
-        if sc.block_counter in (2, 4): sc.add_attention_check(question_text=AC_2_TEXT, choices=AC_2_CHOICES) 
+        if sc.block_counter == 5: sc.add_generic_attention_check(opt=4) 
         sc.add_page_timer_question()
 
     sc.apply_generic_flow()

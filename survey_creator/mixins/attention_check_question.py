@@ -57,7 +57,7 @@ class AttentionCheckQuestionMixin(BaseMultipleChoiceQuestion):
         if opt is None:
             opt = random.randint(1, 4)
 
-        desc = f'AC_{self.attention_check_num}_TYPE_{opt}'
+        desc = f'AC_{self.attention_check_num}_TYPE_{opt}G'
         self.attention_check_num += 1
 
         body = self._multiple_choice_question(
