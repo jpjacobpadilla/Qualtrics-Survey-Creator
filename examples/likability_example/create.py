@@ -66,7 +66,7 @@ def create_survey(survey_info) -> None:
         if sc.block_counter == 5: sc.add_generic_attention_check(opt=4) 
         sc.add_page_timer_question()
 
-    sc.apply_generic_flow()
+    sc.apply_flow_with_template()
 
 
 with concurrent.futures.ThreadPoolExecutor(max_workers=5) as executor:
