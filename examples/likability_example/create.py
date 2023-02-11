@@ -1,4 +1,5 @@
 import concurrent.futures
+import time
 from sqlalchemy import create_engine
 from examples.utils import mod_ten_conversation_id_list
 from survey_creator import Creator
@@ -47,6 +48,8 @@ def create_survey(survey_info) -> None:
         if sc.block_counter in (1, 4): sc.add_generic_attention_check(opt=1) 
         sc.add_page_timer_question()
 
+    time.sleep(10)
+    print('applying flow to: ', survey_id, 'survey number: ', survey_index + 1)
     sc.apply_flow_with_template()
 
 

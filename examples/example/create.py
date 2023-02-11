@@ -1,4 +1,5 @@
 import concurrent.futures
+import time
 from sqlalchemy import create_engine
 from examples.utils import mod_ten_conversation_id_list
 from survey_creator import Creator
@@ -66,6 +67,8 @@ def create_survey(survey_info) -> None:
         sc.add_mc_question(question_text=MC_1_TEXT, choices=MC_1_TEXT_CHOICES, direction='horizontal', desc=f'{conversation_id}_mc_1')
         sc.add_page_timer_question()
 
+    time.sleep(10)
+    print('applying flow to: ', survey_id, 'survey number: ', survey_index + 1)
     sc.apply_generic_flow()
 
 
