@@ -1,4 +1,3 @@
-import sys
 import concurrent.futures
 from sqlalchemy import create_engine
 from examples.utils import mod_ten_conversation_id_list
