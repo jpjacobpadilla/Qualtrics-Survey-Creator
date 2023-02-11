@@ -49,6 +49,7 @@ class ApplyFlowMixin:
         'Flow': [
         {'Autofill': [],
             'FlowID': 'FL_1',
+            'ID': 'BL_2gARGw3jgJSAMSO',
             'Type': 'Standard'
         },
         {
