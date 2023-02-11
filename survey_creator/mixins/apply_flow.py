@@ -1,6 +1,3 @@
-from survey_creator.utils import block_info
-
-
 class ApplyFlowMixin:
     """
     Qualtrics "flow" is how the flow of questions in the survey is controlled.
@@ -32,7 +29,7 @@ class ApplyFlowMixin:
         return resp
 
     @staticmethod
-    def _add_flow_elements(elements: list[block_info]) -> list:
+    def _add_flow_elements(elements: list) -> list:
         _placeholder = []
 
         for elem in elements:
