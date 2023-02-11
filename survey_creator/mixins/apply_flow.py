@@ -44,7 +44,6 @@ class ApplyFlowMixin:
             
         return _placeholder
 
-    @staticmethod
     def flow_request_body_with_template(self) -> dict:
         return {
         'Flow': [
@@ -154,7 +153,6 @@ class ApplyFlowMixin:
         'FlowID': 'FL_1',
         'Type': 'Root'}
 
-    @staticmethod
     def flow_request_body(self) -> dict:
         return {
         'Flow': [
