@@ -33,7 +33,7 @@ class AttentionCheckQuestionMixin(BaseMultipleChoiceQuestion):
         This is helpful in determining the answers to the attention checks when 
         once you have collected the data.
         """
-        desc = f'AC_{self.attention_check_num}_TYPE_{type}'
+        desc = f'AC_{self.attention_check_num}_[TYPE_{type}]'
         self.attention_check_num += 1
 
         body = self._multiple_choice_question(
@@ -54,10 +54,17 @@ class AttentionCheckQuestionMixin(BaseMultipleChoiceQuestion):
         return resp  
     
     def add_generic_attention_check(self, opt: Union[1,2,3,4] = None) -> dict:
+        """
+        Add a multiple choice style attention check.
+
+        You can either specify no arguments, and a random question will be selected 
+        from self.default_ac (dict), or you can use the OPT param to specify which default
+        option you want.
+        """
         if opt is None:
             opt = random.randint(1, 4)
 
-        desc = f'AC_{self.attention_check_num}_TYPE_{opt}G'
+        desc = f'AC_{self.attention_check_num}_[TYPE_{opt}G]'
         self.attention_check_num += 1
 
         body = self._multiple_choice_question(
