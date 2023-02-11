@@ -67,7 +67,7 @@ data_center_id = 'ca1'
 # List of survey ids
 survey_ids = ['SURVEY_ID','SURVEY_ID','SURVEY_ID']
 
-with concurrent.futures.ThreadPoolExecutor(max_workers=5) as executor:
+with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:
     futures = [executor.submit(create_survey, (index, id)) for index, id in enumerate(survey_ids)]
 
     # Wait for all futures to finish

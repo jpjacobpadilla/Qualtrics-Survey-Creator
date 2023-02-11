@@ -70,7 +70,7 @@ def create_survey(survey_info) -> None:
     sc.apply_generic_flow()
 
 
-with concurrent.futures.ThreadPoolExecutor(max_workers=5) as executor:
+with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:
     futures = [executor.submit(create_survey, (index, id)) for index, id in enumerate(survey_ids)]
 
     # Wait for all futures to finish
