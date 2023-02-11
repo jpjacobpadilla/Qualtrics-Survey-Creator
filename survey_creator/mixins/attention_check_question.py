@@ -33,7 +33,7 @@ class AttentionCheckQuestionMixin(BaseMultipleChoiceQuestion):
         This is helpful in determining the answers to the attention checks when 
         once you have collected the data.
         """
-        desc = f'AC_{self.attention_check_num}_[TYPE_{type}]'
+        desc = f'ac_{self.attention_check_num}_[type_{type}]'
         self.attention_check_num += 1
 
         body = self._multiple_choice_question(
@@ -64,7 +64,7 @@ class AttentionCheckQuestionMixin(BaseMultipleChoiceQuestion):
         if opt is None:
             opt = random.randint(1, 4)
 
-        desc = f'AC_{self.attention_check_num}_[TYPE_{opt}G]'
+        desc = f'ac_{self.attention_check_num}_[type_{opt}g]'
         self.attention_check_num += 1
 
         body = self._multiple_choice_question(
