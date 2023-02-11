@@ -11,8 +11,7 @@ from secret import (
 from question_text import (
     QUESTION_ONE_TEXT, QUESTION_TWO_PERSON_1_TEXT, 
     QUESTION_TWO_PERSON_2_TEXT,
-    AC_2_CHOICES, AC_1_CHOICES,
-    AC_2_TEXT, AC_1_TEXT
+    AC_1_CHOICES, AC_1_TEXT
 )
 
 
