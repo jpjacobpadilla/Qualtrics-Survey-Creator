@@ -21,6 +21,8 @@ class ApplyFlowMixin:
         """
         This is to apply flow to a Qualtrics survey with the template that we
         have been using. It includes the starting and ending questions.
+        
+        IMPORTANT: This uses pre-defined created blocks/questions and their block/question id's/
         """
         resp = self._make_qualtrics_request(
                     method='put', 
