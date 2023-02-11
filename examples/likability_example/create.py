@@ -32,7 +32,7 @@ def create_survey(survey_info) -> None:
             print(f'Conversation ID: {conversation_id}')
         else: 
             print("No more conversation ID's in queue!")
-            return 
+            break 
 
         sc.create_block(desc=f'{conversation_id}_block')
         sc.add_text_question(question_text=QUESTION_ONE_TEXT, desc=f'{conversation_id}_intro')

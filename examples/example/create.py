@@ -50,7 +50,7 @@ def create_survey(survey_info) -> None:
             print(f'Conversation ID: {conversation_id}')
         else: 
             print("No more conversation ID's in queue!")
-            return
+            break
 
         # Create block
         sc.create_block(desc=f'block_{conversation_id}')
@@ -58,7 +58,7 @@ def create_survey(survey_info) -> None:
         sc.add_matrix_question(template=1, question_text=QUESTION_TWO_PERSON_1_TEXT, desc=f'{conversation_id}_conv_like_p1')
         sc.add_page_timer_question()
         sc.add_page_break_questions()
-        
+
         sc.add_ec_article_text_question(db=engine, conversation_id=conversation_id, desc=f'{conversation_id}_article')
         sc.add_ec_turn_lvl_convo(db=engine, conversation_id=conversation_id, desc=f'{conversation_id}_turn_lvl_convo')
         sc.add_attention_check(question_text=AC_2_TEXT, choices=AC_2_CHOICES, type=2) 
