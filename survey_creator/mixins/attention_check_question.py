@@ -7,7 +7,7 @@ class AttentionCheckQuestionMixin(BaseMultipleChoiceQuestion):
     
     ac_generic_1 = 'To verify that you are still following along with these questions, please pick "Somewhat disagree" from the list of responses provided below.'
     ac_generic_choices_1 = ['Strongly disagree', 'Somewhat disagree', 'Neither agree nor disagree', 'Somewhat agree', 'Strongly agree']
-    ac_generic_2 = ''''<div>To be sure you are still reading the content of these questions, please select "🌹" from the list of responses below.&nbsp;</div>'''
+    ac_generic_2 = '<div>To be sure you are still reading the content of these questions, please select "🌹" from the list of responses below.&nbsp;</div>'
     ac_generic_choices_2 = ['🐔', '👀', '🌹', '👍', '🌻']
     ac_generic_3 = 'To confirm that you are still paying attention to the questions, we kindly ask that you choose "Neither agree nor disagree" from the list of options below.'
     ac_generic_choices_3 = ['Strongly disagree', 'Somewhat disagree', 'Neither agree nor disagree', 'Somewhat agree', 'Strongly agree']
