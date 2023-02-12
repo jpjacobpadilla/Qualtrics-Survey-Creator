@@ -24,7 +24,7 @@ def create_survey(survey_info) -> None:
     sc = Creator(survey_id=survey_id, data_center_id=data_center_id, api_key=api_key)
 
     # 50 blocks per survey * 10 surveys = 500 blocks (1 per conversation)
-    for _ in range(1, 11):
+    for _ in range(1, 51):
         # Get the conversation id for the block
         if not conversation_id_queue.empty():
             conversation_id = conversation_id_queue.get()
