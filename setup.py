@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='QualtricsSurveyCreator',
+    name='qualtrics_survey_creator',
     version='1.0',
     packages=find_packages(where='/survey_creator'),
     install_requires=[
