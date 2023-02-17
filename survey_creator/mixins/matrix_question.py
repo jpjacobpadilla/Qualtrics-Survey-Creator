@@ -5,7 +5,7 @@ class MatrixTemplate:
     """Log matrix bodies"""
 
     def __init__(self):
-        self.template: dict[str, Callable] = {}
+        self.template: dict[int, Callable] = {}
 
     def __getitem__(self, item):
         return self.template[item]
@@ -42,6 +42,7 @@ class MatrixQuestionMixin:
         """
         "choices" are the vertical options (on the left)
         "answers" are the horizontal options (on top)
+        Randomization is hard coded.
         """
         return {"Answers":{
                     "1": {
@@ -137,23 +138,9 @@ class MatrixQuestionMixin:
                         }
                     },
                 "DataExportTag": data_export_tag,
-                "randomization": {
-                    "type": "advanced",
-                    "options": {
-                        "fixedOrder": [
-                            "{~Randomized~}",
-                            "{~Randomized~}",
-                            "{~Randomized~}"
-                        ],
-                        "randomizeAll": [
-                            "1",
-                            "2",
-                            "3"
-                        ],
-                        "randomSubset": [],
-                        "undisplayed": [],
-                        "totalRandomSubset": 0,
-                        "evenPresentation": False
-                    }
+                "Randomization": {
+                    "Advanced": None,
+                    "Type": "All",
+                    "TotalRandSubset": ""
                 }
             }
