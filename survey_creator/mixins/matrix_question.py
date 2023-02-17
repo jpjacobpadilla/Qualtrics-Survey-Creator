@@ -21,11 +21,10 @@ class MatrixQuestionMixin:
 
     matrix_template = MatrixTemplate()
 
-    def add_matrix_question(self, template: int, question_text: str, desc: str, randomization: bool = False) -> dict:
+    def add_matrix_question(self, template: int, question_text: str, desc: str) -> dict:
         matrix_func = self.matrix_template[template]
 
         body = matrix_func(text=question_text, desc=desc, data_export_tag=desc)
-        if randomization: body['randomization'] = { "type": "all"}
 
         resp = self._make_qualtrics_request(
                     method='post', 
@@ -137,5 +136,24 @@ class MatrixQuestionMixin:
                         "Type":"None"
                         }
                     },
-                "DataExportTag": data_export_tag
+                "DataExportTag": data_export_tag,
+                "randomization": {
+                    "type": "advanced",
+                    "options": {
+                        "fixedOrder": [
+                            "{~Randomized~}",
+                            "{~Randomized~}",
+                            "{~Randomized~}"
+                        ],
+                        "randomizeAll": [
+                            "1",
+                            "2",
+                            "3"
+                        ],
+                        "randomSubset": [],
+                        "undisplayed": [],
+                        "totalRandomSubset": 0,
+                        "evenPresentation": False
+                    }
                 }
+            }
