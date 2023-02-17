@@ -21,11 +21,12 @@ class MatrixQuestionMixin:
 
     matrix_template = MatrixTemplate()
 
-    def add_matrix_question(self, template: int, question_text: str, desc: str) -> dict:
+    def add_matrix_question(self, template: int, question_text: str, desc: str, randomization: bool = False) -> dict:
         matrix_func = self.matrix_template[template]
 
         body = matrix_func(text=question_text, desc=desc, data_export_tag=desc)
-        
+        if randomization: body['randomization'] = { "type": "all"}
+
         resp = self._make_qualtrics_request(
                     method='post', 
                     endpoint=self.question_url, 
@@ -44,29 +45,29 @@ class MatrixQuestionMixin:
         "answers" are the horizontal options (on top)
         """
         return {"Answers":{
-                    "1":{
+                    "1": {
                         "Display": '1-Not At All'
                     },
-                    "2":{
+                    "2": {
                         "Display": '2'
                     },
-                    "3":{
+                    "3": {
                         "Display": '3'
                     },
-                    "4":{
+                    "4": {
                         "Display": '4'
                     },
-                    "5":{
+                    "5": {
                         "Display": '5'
                     },
-                    "6":{
+                    "6": {
                         "Display": '6'
                     },
-                    "7":{
+                    "7": {
                         "Display": '7-Extremely'
                     }
-                    },
-                    "AnswerOrder":[
+                },
+                "AnswerOrder":[
                     1,
                     2,
                     3,
@@ -75,8 +76,8 @@ class MatrixQuestionMixin:
                     6,
                     7,
                     8
-                    ],
-                "ChoiceDataExportTags":False,
+                ],
+                "ChoiceDataExportTags": False,
                 "ChoiceOrder":[
                     1,
                     2,
@@ -86,30 +87,30 @@ class MatrixQuestionMixin:
                     6,
                     7,
                     8
-                    ],
+                ],
                 "Choices":{
-                    "1":{
+                    "1": {
                         "Display": 'Happy'
                     },
-                    "2":{
+                    "2": {
                         "Display": 'Friendly'
                     },
-                    "3":{
+                    "3": { 
                         "Display": 'Someone you would enjoy chatting with'
                     },
-                    "4":{
+                    "4": {
                         "Display": 'Calm'
                     },
-                    "5":{
+                    "5": {
                         "Display": 'someone you would like to be friends with'
                     },
-                    "6":{
+                    "6": {
                         "Display": 'Likeable'
                     },
-                    "7":{
+                    "7": {
                         "Display": 'Sad'
                     },
-                    "8":{
+                    "8": {
                         "Display": 'Excited'
                     }
                 },
@@ -129,11 +130,12 @@ class MatrixQuestionMixin:
                 "QuestionType":"Matrix",
                 "Selector":"Likert",
                 "SubSelector":"SingleAnswer",
-                "Validation":{"Settings":{
+                "Validation": {
+                    "Settings": {
                         "ForceResponse":"ON",
                         "ForceResponseType":"ON",
                         "Type":"None"
-                    }
+                        }
                     },
-                "DataExportTag":data_export_tag
+                "DataExportTag": data_export_tag
                 }
