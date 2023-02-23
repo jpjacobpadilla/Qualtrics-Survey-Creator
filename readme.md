@@ -33,3 +33,5 @@ Look at the example.
 ### Missing files
 
 ```secret.py``` - Program secrets. keeps the Qualtrics API key and database credentials.
+
+![flow-example](flow-example.png)
