@@ -69,6 +69,7 @@ data_center_id = 'ca1'
 # List of survey ids
 survey_ids = ['SURVEY_ID','SURVEY_ID','SURVEY_ID']
 
+# I'm too lazy to implement Asyncio
 with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:
     futures = [executor.submit(create_survey, (index, id)) for index, id in enumerate(survey_ids)]
 
