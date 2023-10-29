@@ -1,11 +1,5 @@
 # **Qualtrics Survey Creator**
 
-### **Setup**
-
-```shell
-pip install -e .
-```
-
 ### **Mixin Classes**
 1. CreateBlockMixin
 2. TextQuestionMixin
@@ -33,6 +27,30 @@ There is also a lot of documentation in ```survey_creator/__init__.py```
 The general structure of survey that this creator makes is as follows:
 
 ![An image of a Qualtrics survey "flow"](examples/flow-example.png)
+
+
+### Installation & Instructions
+
+Download the code:
+```bash
+git clone https://github.com/jpjacobpadilla/Qualtrics-Survey-Creator.git
+```
+
+Navigate to the Repository Directory:
+```
+cd IDNYC-Availability-API
+```
+
+Make some sort of environment:
+```bash
+python -m venv venv
+source venv/bin/activate
+```
+
+Install the package in editable mode so that you can make changes to it:
+```bash
+pip install -e .
+```
 
 ### Missing files
 
