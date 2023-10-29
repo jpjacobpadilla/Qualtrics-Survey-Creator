@@ -38,7 +38,7 @@ git clone https://github.com/jpjacobpadilla/Qualtrics-Survey-Creator.git
 
 Navigate to the Repository Directory:
 ```
-cd IDNYC-Availability-API
+cd Qualtrics-Survey-Creator
 ```
 
 Make some sort of environment:
