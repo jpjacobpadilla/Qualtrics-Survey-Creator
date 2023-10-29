@@ -26,9 +26,13 @@ And maybe a few more to come in the future!
 
 ### **How do you use it?**
 
-There is a lot of documentation in ```survey_creator/__init__.py```
+There are two examples in the repository. Contact me [here](https://jacobpadilla.com/contact) if you have any questions!
 
-Look at the example.
+There is also a lot of documentation in ```survey_creator/__init__.py```
+
+The general structure of survey that this creator makes is as follows:
+
+![An image of a Qualtrics survey "flow"](examples/flow-example.png)
 
 ### Missing files
 
