@@ -32,3 +32,6 @@ secret.py
 
 # Likability survey stuff
 likability_survey/
+
+# Private documentation
+example/flow-example.png
