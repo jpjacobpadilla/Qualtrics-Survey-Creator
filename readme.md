@@ -1,4 +1,4 @@
-# **Qualtrics Survey Creator**
+# Qualtrics Survey Creator
 
 ### **Mixin Classes**
 1. CreateBlockMixin
