@@ -12,20 +12,9 @@
 9. MultipleChoiceQuestionMixin
 10. ApplyFlowMixin
 
-And maybe a few more to come in the future!
-
 ### Mixin Parent Classes
 1. BaseMultipleChoiceQuestion
 2. BaseTextQuestion
-
-### **How do you use it?**
-
-There are two examples in the repository. There's also a lot of documentation in ```survey_creator/__init__.py```
-
-The general structure of survey that this creator makes is as follows:
-
-![An image of a Qualtrics survey "flow"](examples/flow-example.png)
-
 
 ### Installation & Instructions
 
@@ -52,4 +41,4 @@ pip install -e .
 
 ### Missing files
 
-```secret.py``` - Program secrets. keeps the Qualtrics API key and database credentials.
+```secret.py``` - Program secrets - Keeps the Qualtrics API key and database credentials.
