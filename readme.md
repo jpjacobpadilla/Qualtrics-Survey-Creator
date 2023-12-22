@@ -20,9 +20,7 @@ And maybe a few more to come in the future!
 
 ### **How do you use it?**
 
-There are two examples in the repository. Contact me [here](https://jacobpadilla.com/contact) if you have any questions!
-
-There is also a lot of documentation in ```survey_creator/__init__.py```
+There are two examples in the repository. There's also a lot of documentation in ```survey_creator/__init__.py```
 
 The general structure of survey that this creator makes is as follows:
 
