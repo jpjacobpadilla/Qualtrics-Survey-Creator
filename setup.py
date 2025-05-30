@@ -12,6 +12,5 @@ setup(
         'pretty_html_table',
         'chardet'
     ],
-    author='Jacob Padilla',
-    author_email='jep9670@stern.nyu.edu'
+    author='Jacob Padilla'
 )
